@@ -1,0 +1,22 @@
+PATCH http://localhost:8000/posts
+{
+    "id":10,
+    "title": "Nest.js News",
+    "postType": "post",
+    "slug": "new-with-nest-js-news",
+    "status": "draft",
+    "content": "Nest.js is a modern framework for building efficient, scalable server-side applications with Node.js.",
+    "schema": "{}",
+    "featuredImageUrl": "http://localhost.com/images/image1.jpg",
+    "publishOn": "2024-03-16T07:46:32+0000",
+    "tags": [
+        "nest.js",
+        "typescript"
+    ],
+    "metaOptions": [
+        {
+            "key": "testKey",
+            "value": "testValue"
+        }
+    ]
+}
