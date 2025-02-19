@@ -10,6 +10,7 @@ import {
   IsString,
   IsUrl,
   Matches,
+  MaxLength,
   MinLength,
 } from 'class-validator';
 import { postStatus } from '../enums/postStatus.enum';
@@ -23,6 +24,7 @@ export class CreatePostDto {
   })
   @IsString()
   @MinLength(4)
+  @MaxLength(512)
   @IsNotEmpty()
   title: string;
 
@@ -44,6 +46,7 @@ export class CreatePostDto {
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message: 'Slug should be in format "my-post-title" or "my-post-title-123"',
   })
+  @MaxLength(256)
   slug: string;
 
   @ApiProperty({
@@ -77,6 +80,7 @@ export class CreatePostDto {
   })
   @IsUrl()
   @IsOptional()
+  @MaxLength(1024)
   featuredImageUrl?: string;
 
   @ApiPropertyOptional({

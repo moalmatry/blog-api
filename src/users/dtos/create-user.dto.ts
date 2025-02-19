@@ -16,14 +16,17 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   @MinLength(3)
+  @MaxLength(96)
   lastName?: string;
 
   @IsEmail()
   @IsNotEmpty()
+  @MaxLength(96)
   email: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
+  @MaxLength(96)
   password: string;
 }
