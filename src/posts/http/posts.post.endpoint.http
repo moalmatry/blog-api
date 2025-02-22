@@ -4,7 +4,7 @@ Content-Type: application/json
 {
     "title": "Nest.js News",
     "postType": "post",
-    "slug": "new-with-nest-js-new",
+    "slug": "new-with-nest-js",
     "status": "draft",
     "content": "Nest.js is a modern framework for building efficient, scalable server-side applications with Node.js.",
     "schema": "{}",
@@ -16,5 +16,6 @@ Content-Type: application/json
     ],
     "metaOptions": {
         "metaValue": "{\"name\":\"Mohamed Almatry\"}"
-    }
+    },
+    "authorId":1
 }

@@ -8,7 +8,7 @@ export class AuthService {
     private readonly usersService: UsersService,
   ) {}
   login(email: string, password: string, id: string) {
-    const user = this.usersService.findOneById('1');
+    // const user = this.usersService.findOneById('1');
     // Check User in Database
     // Login
     // Token
