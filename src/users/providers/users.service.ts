@@ -44,9 +44,8 @@ export class UsersService {
     // Handle error if user already exists
 
     // Create user
-    let newUser = this.userRepository.create(createUserDto);
-    newUser = await this.userRepository.save(newUser);
+    const newUser = this.userRepository.create(createUserDto);
 
-    return newUser;
+    return await this.userRepository.save(newUser);
   }
 }

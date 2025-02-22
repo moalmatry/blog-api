@@ -12,10 +12,11 @@ import {
   Matches,
   MaxLength,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
 import { postStatus } from '../enums/postStatus.enum';
 import { postType } from '../enums/postType.enum';
-import { CreatePostMetaOptionsDto } from './create-post-meta-options.dtos';
+import { CreatePostMetaOptionsDto } from '../../meta-options/dtos/create-post-meta-options.dtos';
 
 export class CreatePostDto {
   @ApiProperty({
@@ -102,26 +103,22 @@ export class CreatePostDto {
   tags: string[];
 
   @ApiPropertyOptional({
-    type: 'array',
+    type: 'object',
     readOnly: false,
+    additionalProperties: true,
     items: {
       type: 'object',
       properties: {
-        key: {
-          type: 'string',
-          description: 'any string',
-          example: 'sidebarEnabled',
-        },
-        value: {
-          type: 'string',
-          description: 'any string',
-          example: true,
+        metaValue: {
+          type: 'json',
+          description: 'The meta value is json string',
+          example: '{"sidebarEnabled":true}',
         },
       },
     },
   })
   @IsOptional()
-  @IsArray()
+  @ValidateNested({ each: true })
   @Type(() => CreatePostMetaOptionsDto)
-  metaOptions?: CreatePostMetaOptionsDto[];
+  metaOptions?: CreatePostMetaOptionsDto | null;
 }

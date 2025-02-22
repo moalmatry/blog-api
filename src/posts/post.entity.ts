@@ -1,8 +1,15 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
-import { CreatePostMetaOptionsDto } from './dtos/create-post-meta-options.dtos';
+import { MetaOption } from 'src/meta-options/meta-option.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { postStatus } from './enums/postStatus.enum';
 import { postType } from './enums/postType.enum';
 
+@Entity()
 export class Post {
   @PrimaryGeneratedColumn()
   id: number;
@@ -52,9 +59,14 @@ export class Post {
   @Column({
     type: 'timestamp',
     nullable: true,
-    default: () => 'CURRENT_TIMESTAMP',
   })
   publishOn?: Date;
+
+  @OneToOne(() => MetaOption, {
+    cascade: true,
+    eager: true,
+  })
+  @JoinColumn()
+  metaOptions?: MetaOption;
   tags?: string[];
-  metaOptions: CreatePostMetaOptionsDto[];
 }
